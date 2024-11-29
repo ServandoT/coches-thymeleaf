@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- "#" accede al fichero de resources messages -->
+	<title th:text="#{titulo.coches}">Coches</title>
+</head>
+	<body>	
+        <!-- "$" accede al controlador -->
+        <!-- Prueba de if, si está vacía la lista que nos mandan mostramos "No hay coches" -->
+		<!-- <p style="color: red" th:if="${coches.isEmpty()}">No hay coches</p>  -->
+
+        <h1 th:text="#{titulo.coches}">Coches</h1>
+        <p th:text="#{coches.vacio}" style="color: red" th:if="${coches.isEmpty()}" ></p>
+
+        <!-- Usamos la misma condicion como si fuera un else del th:if -->
+        <div th:unless="${coches.isEmpty()}">
+            <table border="solid 1px black">
+                <tr border="solid 1px black">
+                    <td th:text="#{coche.marca}"></td>
+                    <td th:text="#{coche.modelo}"></td>
+                    <td th:text="#{coche.precio}"></td>
+                    <td th:text="#{coche.anyo}"></td>
+                    <td th:text="#{coche.fuenteEnergia}"></td>
+                </tr>
+
+                <!-- Bucle foreach -->
+                <tr border="solid 1px black" th:each="coche : ${coches}">
+                    <td th:text="${coche.marca}"></td>
+                    <td th:text="${coche.modelo}"></td>
+                    <td th:text="${coche.precio}"></td>
+                    <td th:text="${coche.ano}"></td>
+                    <td th:text="${coche.fuenteEnergia}"></td>
+                </tr>
+
+            </table>
+        </div>
+	</body>
+</html>

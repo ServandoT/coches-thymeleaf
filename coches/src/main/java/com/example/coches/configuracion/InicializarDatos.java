@@ -12,7 +12,7 @@ import jakarta.annotation.PostConstruct;
 @Component
 public class InicializarDatos {
 	
-	@Autowired
+	@Autowired // Nos construye este servicio
 	private ServicioCoches servicioCoches;
 	
 	

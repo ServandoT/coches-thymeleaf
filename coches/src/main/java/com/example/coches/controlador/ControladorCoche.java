@@ -1,5 +1,6 @@
 package com.example.coches.controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,14 @@ import jakarta.validation.Valid;
 public class ControladorCoche {
 	
 	@Autowired
-	private ServicioCoches servicioCoches;
+	private ServicioCoches servicioCoches; // Te crea un ServicioCoches
 	
+	// Cada uno de 
 	@GetMapping("/")
 	public String index(Model model) {
-		model.addAttribute("mensaje", " DWES :: RA3");
+		model.addAttribute("mensaje", " DWES :: RA3"); // Introduce atributos al model (entrada y salida)
 		model.addAttribute("idiomas", Idioma.values());
-		return "index";
+		return "index"; // Es cómo se llama la plantilla --> lo manda a index.html
 	}
 
 	 @GetMapping("/idioma")
@@ -38,6 +40,14 @@ public class ControladorCoche {
 		 }else {
 			 return "redirect:/?lang=es";
 		 }
+	 }
+	 
+	 @GetMapping("/coches")
+	 public String coches(Model model) { // Ese parámetro es el idioma
+	 	List<Coche> coches = servicioCoches.obtenerTodos();
+		model.addAttribute("coches", coches); // Prueba para probar el si la lista está vacía
+		// model.addAttribute("idiomas", Idioma.values());
+		return "coches"; // Lo manda a coches.html
 	 }
 	 
 }

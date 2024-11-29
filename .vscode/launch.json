@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CochesApplication<coches>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.coches.CochesApplication",
+            "projectName": "coches",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
